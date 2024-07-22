@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Game from './components/Game';
+import Congrats from './components/Congrats';
+import Leaderboard from './components/Leaderboard';
+import styled, { createGlobalStyle } from 'styled-components';
 
-function App() {
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+`;
+
+const AppContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <AppContainer>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Game />} />
+            <Route path="/congrats" element={<Congrats />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+          </Routes>
+        </Router>
+      </AppContainer>
+    </>
   );
-}
+};
 
 export default App;
