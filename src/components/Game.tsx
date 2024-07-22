@@ -75,7 +75,7 @@ const Button = styled.button`
 
 const Game: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(15);
-  const [ballY, setBallY] = useState(150); // Start ball in the middle
+  const [ballY, setBallY] = useState(150); 
   const [score, setScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef<number | null>(null);
@@ -84,7 +84,7 @@ const Game: React.FC = () => {
   useEffect(() => {
     if (isPlaying) {
       intervalRef.current = window.setInterval(() => {
-        setBallY(prev => Math.min(prev + 5, 270)); // Gravity pulls the ball down
+        setBallY(prev => Math.min(prev + 5, 270)); 
       }, 100);
 
       const timerId = setInterval(() => {
